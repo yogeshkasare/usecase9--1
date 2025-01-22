@@ -11,12 +11,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # Fetch the last two commits
 
       - name: Check for new files
         id: check_files
         run: |
-          git fetch origin
-          git diff --name-only origin/main...HEAD | grep '^my-folder/' || exit 1
+          git diff --name-only HEAD^ HEAD | grep '^my-folder/' || exit 1
 
       - name: Run your script
         if: success()
