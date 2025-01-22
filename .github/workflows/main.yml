@@ -3,7 +3,7 @@ name: Run on new files in folder
 on:
   push:
     paths:
-      - ss-folder/**
+      - 'ss-folder/**'
 
 jobs:
   new-files-job:
