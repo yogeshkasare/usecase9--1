@@ -13,8 +13,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check for new files
+        id: check_files
         run: |
-          git diff --name-only HEAD^ HEAD | grep '^my-folder/' || exit 1
+          git fetch origin
+          git diff --name-only origin/main...HEAD | grep '^my-folder/' || exit 1
 
       - name: Run your script
+        if: success()
         run: echo "New files have been added to my-folder"
