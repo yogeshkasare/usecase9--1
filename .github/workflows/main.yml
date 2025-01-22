@@ -1,0 +1,16 @@
+name: Run on new files in folder
+
+on:
+  push:
+    paths:
+      - ss-folder/**
+
+jobs:
+  new-files-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run your script
+        run: echo "New files have been added to my-folder"
