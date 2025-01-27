@@ -3,7 +3,7 @@ name: Run on new files in folder
 on:
   push:
     paths:
-      - my-folder/**
+      - 27jan/**
 
 jobs:
   new-files-job:
@@ -17,7 +17,7 @@ jobs:
       - name: Check for new files
         id: check_files
         run: |
-          git diff --name-only HEAD^ HEAD | grep '^my-folder/' || exit 1
+          git diff --name-only HEAD^ HEAD | grep '^27jan/' || exit 1
 
       - name: Run your script
         if: success()
